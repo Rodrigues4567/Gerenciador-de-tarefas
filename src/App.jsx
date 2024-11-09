@@ -23,10 +23,29 @@ function App() {
     isCompleted: false
   }])
 
+  // Função para marcar uma tarefa como finalizada (atualiza o estado)
+  function onTaskClick(taskId) {
+    const newTask = tasks.map((task) => {
+      if (task.id == taskId) {
+        return {...task, isCompleted: !task.isCompleted}
+      }
+      return task
+    })
+
+    setTasks(newTask)
+  }
+
+  // Função para deletar uma tarefa
+  function deleteTask(taskId) {
+    const newDelete = tasks.filter((task) => task.id !== taskId)
+
+    setTasks(newDelete)
+  }
+
   return (
     <>
       <h1>Gerenciador de tarefas</h1>
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask} />
     </>
   )
 }

@@ -35,3 +35,9 @@ button {
 button:hover {
     background-color: #861f27;
 }
+
+/* Classe que irá fazer o texto ser marcado quando o botão for clicado */
+.line {
+    text-decoration: line-through;
+    color: #f2f2f2c0;
+}
