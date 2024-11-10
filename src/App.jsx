@@ -43,6 +43,7 @@ function App() {
     setTasks(newDelete)
   }
 
+  // Adicionar nova tarefa
   function onAddTaskSubmit(title, description) {
     const addTask = {
       id: tasks.length + 1,
