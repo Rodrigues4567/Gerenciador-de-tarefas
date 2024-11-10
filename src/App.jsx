@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import AddTask from './components/AddTasks'
 import Tasks from './components/tasks'
 
 
@@ -42,9 +43,21 @@ function App() {
     setTasks(newDelete)
   }
 
+  function onAddTaskSubmit(title, description) {
+    const addTask = {
+      id: tasks.length + 1,
+      title: title,
+      description: description,
+      isCompleted: false
+    }
+
+    setTasks([...tasks, addTask])
+  }
+
   return (
     <>
       <h1>Gerenciador de tarefas</h1>
+      <AddTask onAddTaskSubmit={onAddTaskSubmit} />
       <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask} />
     </>
   )
