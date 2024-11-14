@@ -33,14 +33,14 @@ function App() {
       return task
     })
 
-    setTasks(newTask)
+    setTasks(() => newTask)
   }
 
   // Função para deletar uma tarefa
   function deleteTask(taskId) {
     const newDelete = tasks.filter((task) => task.id !== taskId)
 
-    setTasks(newDelete)
+    setTasks(() => newDelete)
   }
 
   // Adicionar nova tarefa
@@ -52,7 +52,7 @@ function App() {
       isCompleted: false
     }
 
-    setTasks([...tasks, addTask])
+    setTasks(() => [...tasks, addTask])
   }
 
   return (

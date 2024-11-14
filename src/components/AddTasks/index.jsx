@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './addTask.module.css'
 
-function AddTask(props) {
+function AddTask({ onAddTaskSubmit }) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -14,7 +14,12 @@ function AddTask(props) {
 
                     <input type="text" className={styles.input_text} placeholder='Digite a descrição da tarefa' onChange={(event) => setDescription(event.target.value)} />
 
-                    <input onClick={() => props.onAddTaskSubmit(title, description)} className={styles.button} type="submit" value="Adicionar" />
+                    <input onClick={() => {
+                        if (!title.trim() || !description.trim()) {
+                            return alert('Preencha os formulários corretamente!')
+                        }
+                        onAddTaskSubmit(title, description)
+                    }} className={styles.button} type="submit" value="Adicionar" />
                 </div>
             </div>
         </>
